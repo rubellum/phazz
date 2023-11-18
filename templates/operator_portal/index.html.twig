@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('Top', {
+        path: {
+            register: path('operator_portal.job.register'),
+            job_search: path('operator_portal.job.search'),
+            task_search: path('operator_portal.task.search'),
+        }
+    }) }}></div>
+{% endblock %}

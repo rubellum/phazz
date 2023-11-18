@@ -1,0 +1,24 @@
+{
+  "name": {
+    "ui:title": "Name",
+    "ui:autofocus": true
+  },
+  "url": {
+    "ui:title": "URL"
+  },
+  "type": {
+    "ui:widget": "radio"
+  },
+  "operation": {
+    "ui:title": "Operation",
+    "ui:widget": "textarea"
+  },
+  "ui:submitButtonOptions": {
+    "props": {
+      "disabled": false,
+      "className": "btn btn-info"
+    },
+    "norender": false,
+    "submitText": "Save"
+  }
+}

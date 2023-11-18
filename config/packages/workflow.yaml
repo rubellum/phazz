@@ -1,0 +1,25 @@
+framework:
+  workflows:
+    crawl:
+      type: workflow
+      initial_marking: waiting
+      marking_store:
+        type: 'method'
+        property: 'state'
+      supports:
+        - JobAccess\DataModel\CrawlJobTask
+      places:
+        - waiting
+        - doing
+        - success
+        - error
+      transitions:
+        execution:
+          from: waiting
+          to: doing
+        success:
+          from: doing
+          to: error
+        failure:
+          from: doing
+          to: error

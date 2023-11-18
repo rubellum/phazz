@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('JobSearch', {
+        path: {
+            render: path('operator_portal.api.job.search'),
+            action: path('operator_portal.api.job.search'),
+        }
+    }) }}></div>
+{% endblock %}

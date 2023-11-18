@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# data-form-token はテスト用 #}
+    <div data-form-token="{{ csrf_token('form') }}" {{ react_component('ExecutionForm', {
+        token: csrf_token('form'),
+        id: id,
+        path: {
+            render: path('operator_portal.api.job.execution.form'),
+            action: path('operator_portal.api.job.execution.save'),
+        },
+    }) }}></div>
+{% endblock %}

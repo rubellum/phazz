@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('JobConfirm', {
+        token: csrf_token('form'),
+        id: id,
+        path: {
+            render: path('operator_portal.api.job.confirm'),
+            action: path('operator_portal.api.job.confirm'),
+        },
+    }) }}></div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "type": {
+      "title": "Crawler Type",
+      "type": "string",
+      "enum": [
+        "single",
+        "list-detail"
+      ]
+    }
+  },
+  "definitions": {
+    "operation": {
+      "type": "object",
+      "title": "operation",
+      "properties": {
+        "fields": {
+          "type": "array",
+          "title": "data fields",
+          "items": {
+            "$ref": "#/definitions/field"
+          }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Field Name"
+        },
+        "type": {
+          "type": "string",
+          "title": "Data Type",
+          "enum": [
+            "text",
+            "list",
+            "object"
+          ]
+        },
+        "converter": {
+          "type": "array",
+          "title": "Format Options",
+          "items": {
+            "type": "string",
+            "enum": [
+              "trim",
+              "shrink_spaces"
+            ]
+          }
+        },
+        "selector": {
+          "type": "string",
+          "title": "XPATH Selector"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "type": {
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "single"
+              ]
+            },
+            "operation": {
+              "type": "object",
+              "title": "operation",
+              "properties": {
+                "single": {
+                  "title": "single",
+                  "$ref": "#/definitions/operation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "enum": [
+                "list-detail"
+              ]
+            },
+            "operation": {
+              "type": "object",
+              "title": "operation",
+              "properties": {
+                "list": {
+                  "title": "list",
+                  "$ref": "#/definitions/operation"
+                },
+                "detail": {
+                  "title": "detail",
+                  "$ref": "#/definitions/operation"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "url",
+    "operation"
+  ]
+}
